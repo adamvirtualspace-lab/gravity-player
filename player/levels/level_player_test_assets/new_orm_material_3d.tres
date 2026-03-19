@@ -1,0 +1,8 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://ypfiakj1kvi3"]
+
+[ext_resource type="Texture2D" uid="uid://r2i807vats03" path="res://player/levels/level_player_test_assets/level_player_test_textures/Light/texture_06.png" id="1_w6q8i"]
+
+[resource]
+albedo_color = Color(0.3998195, 0.3998195, 0.3998195, 0.4509804)
+albedo_texture = ExtResource("1_w6q8i")
+uv1_scale = Vector3(16, 16, 16)
