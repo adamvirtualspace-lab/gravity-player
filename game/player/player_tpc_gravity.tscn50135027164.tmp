@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b0d7mftelcla2"]
+
+[ext_resource type="Script" uid="uid://bw68l1b6j07tv" path="res://game/player/player_tpc_gravity_scripts/player_tpc_gravity.gd" id="1_uab0m"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tplf6"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6n2mv"]
+
+[node name="player_root" type="RigidBody3D" unique_id=703631089]
+script = ExtResource("1_uab0m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1371498710]
+shape = SubResource("CapsuleShape3D_tplf6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1589865025]
+mesh = SubResource("CapsuleMesh_6n2mv")
+
+[node name="CamPivot_LR" type="Node3D" parent="." unique_id=358174792]
+
+[node name="CamPivot_UD" type="Node3D" parent="CamPivot_LR" unique_id=16358961]
+
+[node name="Camera3D" type="Camera3D" parent="CamPivot_LR/CamPivot_UD" unique_id=22090171]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.78911126, 0.86369634, 2.1861436)
+fov = 90.0
