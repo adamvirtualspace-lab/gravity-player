@@ -20,3 +20,5 @@ func _input(event: InputEvent) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 # Mouse Movement
+func _input(event: InputEvent) -> void:
+	pass

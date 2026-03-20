@@ -10,7 +10,7 @@ var CamPivot_LR: Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Get reference to CamPivot_LR
-	CamPivot_LR = get_node("CamPivot_RotateLeftRight")
+	CamPivot_LR = get_node("CamPivotManager/CamPivot_RotateLeftRight")
 
 # Called every physics frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
