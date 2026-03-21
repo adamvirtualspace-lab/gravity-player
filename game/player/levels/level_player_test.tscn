@@ -16,9 +16,6 @@ data = PackedVector3Array(0, -1, 0, 0, -1, 1, 1, -1, 1, 1, -1, 0, 0, -1, 0, 1, -
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0iibd"]
 data = PackedVector3Array(1, -1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, -1, 0, 1, -1, 0, 1, 0, 0, 0, 0, 0, 1, -1, 0, 0, -1, 0, 1, 0, 1, 1, -1, 0, 0, 0, 1, 1, 0, 1, 0, -1, 0)
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_14i2g"]
-bounce = 0.2
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_14i2g"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_tlbe8"]
@@ -107,15 +104,11 @@ shape = SubResource("ConcavePolygonShape3D_jvdaq")
 shape = SubResource("ConcavePolygonShape3D_0iibd")
 
 [node name="SM_ChamferCube3" parent="ThirdPersonMap_Meshes" index="4" unique_id=982378669]
-transform = Transform3D(0.5, 0.86602545, 0, 0, 0, 1, 0.86602545, -0.50000006, 0, 5.5, 2.6404037, 23.4)
+transform = Transform3D(0.5, 0.86602545, 0, 0, 0, 1, 0.86602545, -0.50000006, 0, 5.5, 1.5710404, 23.4)
 
-[node name="StaticBody3D" type="RigidBody3D" parent="ThirdPersonMap_Meshes/SM_ChamferCube3" index="0" unique_id=248613706]
-disable_mode = 2
-physics_material_override = SubResource("PhysicsMaterial_14i2g")
-can_sleep = false
-freeze_mode = 1
+[node name="RigidBody3D" type="RigidBody3D" parent="ThirdPersonMap_Meshes/SM_ChamferCube3" index="0" unique_id=2111642884]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ThirdPersonMap_Meshes/SM_ChamferCube3/StaticBody3D" unique_id=1479496166]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ThirdPersonMap_Meshes/SM_ChamferCube3/RigidBody3D" unique_id=1567927553]
 shape = SubResource("BoxShape3D_14i2g")
 
 [node name="SM_Cube6" parent="ThirdPersonMap_Meshes" index="5" unique_id=473843759]
