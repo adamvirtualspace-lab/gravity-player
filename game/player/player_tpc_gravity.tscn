@@ -8,8 +8,12 @@ friction = 0.2
 rough = true
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tplf6"]
+radius = 0.3
+height = 1.7
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_6n2mv"]
+radius = 0.3
+height = 1.7
 
 [node name="player_root" type="RigidBody3D" unique_id=703631089]
 axis_lock_angular_x = true

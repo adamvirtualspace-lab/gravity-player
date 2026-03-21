@@ -5,6 +5,9 @@ extends RigidBody3D
 ### ----- Defining Variables Starts Here ----- ###
 ### ----- Defining Variables Starts Here ----- ###
 
+# This is to determine if we are on air
+var is_falling: int = 0
+
 # Movement settings
 var movement_speed: float = 1.0
 var movement_force: float = 30.0
@@ -16,7 +19,10 @@ var CamPivot_LR: Node3D
 func _ready() -> void:
 	# Get reference to CamPivot_LR where we base our movement direction of
 	CamPivot_LR = get_node("CamPivotManager/CamPivot_RotateLeftRight")
-	linear_damp = 2.0  # Add this - creates friction
+	linear_damp = 4.0  # Add this - creates friction
+	
+	# Enable contact monitoring to get if we are on air
+	contact_monitor = true
 
 ### ----- Defining Variables Ends Here ----- ###
 ### ----- Defining Variables Ends Here ----- ###
@@ -26,6 +32,10 @@ func _ready() -> void:
 
 # Called every physics frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	# Check if we are in air
+	is_falling = get_contact_count()# == 0
+	print(is_falling)
+	
 
 ### ----- Movement Input Starts Here ----- ###
 
@@ -51,8 +61,8 @@ func _physics_process(delta: float) -> void:
 		var pivot_right = CamPivot_LR.global_transform.basis.x
 
 		# Flatten the forward vector to the ground plane (ignore Y)
-		pivot_forward.y = 0
-		pivot_forward = pivot_forward.normalized()
+		#pivot_forward.y = 0
+		#pivot_forward = pivot_forward.normalized()
 
 		# Calculate movement direction relative to CamPivot_LR
 		var move_direction = (pivot_forward * input_direction.z) + (pivot_right * input_direction.x)
