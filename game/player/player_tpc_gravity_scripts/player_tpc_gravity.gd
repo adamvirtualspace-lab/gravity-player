@@ -4,7 +4,7 @@ extends RigidBody3D
 
 # Movement settings
 var movement_speed: float = 1.0
-var movement_force: float = 50.0
+var movement_force: float = 30.0
 
 # Reference to camera pivots
 var CamPivot_LR: Node3D
@@ -13,6 +13,7 @@ var CamPivot_LR: Node3D
 func _ready() -> void:
 	# Get reference to CamPivot_LR
 	CamPivot_LR = get_node("CamPivotManager/CamPivot_RotateLeftRight")
+	linear_damp = 2.0  # Add this - creates friction
 
 # Called every physics frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -48,4 +49,7 @@ func _physics_process(delta: float) -> void:
 
 		# Apply central impulse for movement
 		# We use delta to make it framerate-independent
-		apply_central_impulse(move_direction * movement_force * delta)
+		#apply_central_impulse(move_direction * movement_force * delta)
+		
+		# NEW - applies continuous force (friction will balance it out)
+		apply_central_force(move_direction * movement_force)
