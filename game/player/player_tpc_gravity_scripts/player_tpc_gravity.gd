@@ -1,5 +1,7 @@
 extends RigidBody3D
 
+### ----- Defining Variables
+
 # Movement settings
 var movement_speed: float = 1.0
 var movement_force: float = 50.0
@@ -15,9 +17,9 @@ func _ready() -> void:
 # Called every physics frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 
-	# Get input direction
+	# Defining Input Direction and set it 0 in every tick
 	var input_direction = Vector3.ZERO
-
+	# Overriding Input Direction if movement keys are pressed
 	if Input.is_action_pressed("MoveForward"):
 		input_direction.z -= 1.0
 	if Input.is_action_pressed("MoveBackward"):
