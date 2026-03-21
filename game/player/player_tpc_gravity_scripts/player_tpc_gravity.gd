@@ -14,7 +14,7 @@ var CamPivot_LR: Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# Get reference to CamPivot_LR
+	# Get reference to CamPivot_LR where we base our movement direction of
 	CamPivot_LR = get_node("CamPivotManager/CamPivot_RotateLeftRight")
 	linear_damp = 2.0  # Add this - creates friction
 
@@ -26,6 +26,8 @@ func _ready() -> void:
 
 # Called every physics frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+
+### ----- Movement Input Starts Here ----- ###
 
 	# Defining Input Direction and set it 0 in every tick
 	var input_direction = Vector3.ZERO
