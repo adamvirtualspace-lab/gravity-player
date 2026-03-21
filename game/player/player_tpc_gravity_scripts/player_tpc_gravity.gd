@@ -1,6 +1,9 @@
 extends RigidBody3D
 
-### ----- Defining Variables
+
+
+### ----- Defining Variables Starts Here ----- ###
+### ----- Defining Variables Starts Here ----- ###
 
 # Movement settings
 var movement_speed: float = 1.0
@@ -14,6 +17,12 @@ func _ready() -> void:
 	# Get reference to CamPivot_LR
 	CamPivot_LR = get_node("CamPivotManager/CamPivot_RotateLeftRight")
 	linear_damp = 2.0  # Add this - creates friction
+
+### ----- Defining Variables Ends Here ----- ###
+### ----- Defining Variables Ends Here ----- ###
+
+
+
 
 # Called every physics frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
