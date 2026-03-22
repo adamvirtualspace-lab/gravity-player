@@ -1,4 +1,3 @@
-@tool
 extends Node3D
 
 
@@ -54,3 +53,4 @@ func camera_look(mouse_movement: Vector2) -> void:
 	#rotate_object_local(Vector3(1,0,0), camera_rotation.y)
 	
 	camera_rotation.y = clamp(camera_rotation.y, -max_y_rotation, max_y_rotation)
+	
