@@ -1,4 +1,6 @@
+@tool
 extends Node3D
+
 
 # define camera_rotation vector2 value starts from 0
 var camera_rotation: Vector2 = Vector2.ZERO
@@ -9,6 +11,7 @@ var max_y_rotation: float = 1.2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
 	pass # Replace with function body.
 
 
@@ -36,7 +39,18 @@ func camera_look(mouse_movement: Vector2) -> void:
 	
 	transform.basis = Basis()
 	
-	rotate_object_local(Vector3(0,1,0), -camera_rotation.x)
-	rotate_object_local(Vector3(1,0,0), camera_rotation.y)
+	# Get Immediate children
+	var cam_pivot_lr = get_child(0)
+	
+	cam_pivot_lr.transform.basis = Basis()
+	cam_pivot_lr.rotate_object_local(Vector3(0,1,0), -camera_rotation.x)
+	
+	var cam_pivot_ud = cam_pivot_lr.get_child(0)
+	
+	cam_pivot_ud.transform.basis = Basis()
+	cam_pivot_ud.rotate_object_local(Vector3(1,0,0), camera_rotation.y)
+	
+	#rotate_object_local(Vector3(0,1,0), -camera_rotation.x)
+	#rotate_object_local(Vector3(1,0,0), camera_rotation.y)
 	
 	camera_rotation.y = clamp(camera_rotation.y, -max_y_rotation, max_y_rotation)

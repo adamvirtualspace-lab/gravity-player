@@ -34,7 +34,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	# Check if we are in air
 	is_falling = get_contact_count()# == 0
-	print(is_falling)
+	#print(is_falling)
 	
 
 ### ----- Movement Input Starts Here ----- ###
