@@ -43,13 +43,14 @@ func _physics_process(delta: float) -> void:
 	var input_direction = Vector3.ZERO
 	# Overriding Input Direction if movement keys are pressed
 	if Input.is_action_pressed("MoveForward"):
-		input_direction.z -= 1.0
-	if Input.is_action_pressed("MoveBackward"):
 		input_direction.z += 1.0
-	if Input.is_action_pressed("MoveLeft"):
-		input_direction.x += 1.0
+	if Input.is_action_pressed("MoveBackward"):
+		input_direction.z -= 1.0
 	if Input.is_action_pressed("MoveRight"):
+		input_direction.x += 1.0
+	if Input.is_action_pressed("MoveLeft"):
 		input_direction.x -= 1.0
+		
 
 	# If there's input, apply movement
 	if input_direction != Vector3.ZERO:
@@ -70,7 +71,7 @@ func _physics_process(delta: float) -> void:
 
 		# Apply central impulse for movement
 		# We use delta to make it framerate-independent
-		#apply_central_impulse(move_direction * movement_force * delta)
+		apply_central_impulse(move_direction * movement_force * delta)
 		
 		# NEW - applies continuous force (friction will balance it out)
-		apply_central_force(move_direction * movement_force)
+		#apply_central_force(move_direction * movement_force)

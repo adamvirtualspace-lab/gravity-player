@@ -115,11 +115,13 @@ shadow_mesh = SubResource("ArrayMesh_14hki")
 transform = Transform3D(-0.70795774, -0.4771388, 0.5207056, 0, 0.73727727, 0.67559016, -0.70625466, 0.4782893, -0.5219612, 0, 2.7427213, 0)
 shadow_enabled = true
 shadow_blur = 1.181
-directional_shadow_split_1 = 0.046
-directional_shadow_split_2 = 0.091
-directional_shadow_split_3 = 0.41
-directional_shadow_max_distance = 404.4
-directional_shadow_pancake_size = 54.6
+directional_shadow_split_1 = 0.014
+directional_shadow_split_2 = 0.044
+directional_shadow_split_3 = 0.162
+directional_shadow_blend_splits = true
+directional_shadow_fade_start = 0.418
+directional_shadow_max_distance = 390.3
+directional_shadow_pancake_size = 12.9
 
 [node name="ThirdPersonMap_Meshes" parent="." unique_id=568365014 instance=ExtResource("1_5nvjj")]
 
@@ -253,15 +255,15 @@ shape = SubResource("ConcavePolygonShape3D_15ebu")
 shape = SubResource("ConcavePolygonShape3D_ttn0b")
 
 [node name="player_root" parent="." unique_id=703631089 instance=ExtResource("3_bjp20")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.268913, 1.7711906, 11.849444)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.1099167, 1.7711906, 11.849444)
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=51419601]
 transform = Transform3D(0.5, 0.86602545, 0, 0, 0, 1, 0.86602545, -0.50000006, 0, 5.5, 2.291458, 23.4)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=2025500892]
-shape = SubResource("BoxShape3D_14i2g")
-
 [node name="SM_ChamferCube3" type="MeshInstance3D" parent="RigidBody3D" unique_id=54400771]
 mesh = SubResource("ArrayMesh_mkpvo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=2025500892]
+shape = SubResource("BoxShape3D_14i2g")
 
 [editable path="ThirdPersonMap_Meshes"]

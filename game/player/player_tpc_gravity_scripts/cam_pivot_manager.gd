@@ -15,8 +15,8 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+#func _process(delta: float) -> void:
+#	pass
 
 # Capturing/decapturing Mouse
 func _input(event: InputEvent) -> void:
@@ -47,7 +47,7 @@ func camera_look(mouse_movement: Vector2) -> void:
 	var cam_pivot_ud = cam_pivot_lr.get_child(0)
 	
 	cam_pivot_ud.transform.basis = Basis()
-	cam_pivot_ud.rotate_object_local(Vector3(1,0,0), camera_rotation.y)
+	cam_pivot_ud.rotate_object_local(Vector3(1,0,0), -camera_rotation.y)
 	
 	#rotate_object_local(Vector3(0,1,0), -camera_rotation.x)
 	#rotate_object_local(Vector3(1,0,0), camera_rotation.y)
