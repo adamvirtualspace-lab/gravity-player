@@ -39,18 +39,17 @@ script = ExtResource("2_p4sqb")
 
 [node name="CamPivot_RotateUpDown" type="Node3D" parent="CamPivotManager/CamPivot_RotateLeftRight" unique_id=16358961]
 
-[node name="SpringArm3D_Sideway" type="SpringArm3D" parent="CamPivotManager/CamPivot_RotateLeftRight/CamPivot_RotateUpDown" unique_id=1826135861]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.35, 0)
+[node name="SpringArm3D_Backward" type="SpringArm3D" parent="CamPivotManager/CamPivot_RotateLeftRight/CamPivot_RotateUpDown" unique_id=1998896320]
+shape = SubResource("SphereShape3D_p4sqb")
+spring_length = 2.0
+margin = 0.3
+
+[node name="SpringArm3D_Sideway" type="SpringArm3D" parent="CamPivotManager/CamPivot_RotateLeftRight/CamPivot_RotateUpDown/SpringArm3D_Backward" unique_id=1826135861]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 2)
 shape = SubResource("SphereShape3D_p4sqb")
 spring_length = 0.5
 margin = 0.3
 
-[node name="SpringArm3D_Backward" type="SpringArm3D" parent="CamPivotManager/CamPivot_RotateLeftRight/CamPivot_RotateUpDown/SpringArm3D_Sideway" unique_id=1998896320]
+[node name="Camera3D" type="Camera3D" parent="CamPivotManager/CamPivot_RotateLeftRight/CamPivot_RotateUpDown/SpringArm3D_Backward/SpringArm3D_Sideway" unique_id=1380393993]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0.5)
-shape = SubResource("SphereShape3D_p4sqb")
-spring_length = 1.5
-margin = 0.3
-
-[node name="Camera3D" type="Camera3D" parent="CamPivotManager/CamPivot_RotateLeftRight/CamPivot_RotateUpDown/SpringArm3D_Sideway/SpringArm3D_Backward" unique_id=1380393993]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
 fov = 90.0
