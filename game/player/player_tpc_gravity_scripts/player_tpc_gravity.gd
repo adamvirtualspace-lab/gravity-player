@@ -3,7 +3,14 @@ extends RigidBody3D
 
 
 ### ----- Defining Variables Starts Here ----- ###
+### █  █  ██  ███  ████  ██  ███  █    ████  ███
+### █  █ █  █ █  █  ██  █  █ █  █ █    █    █   
+### █  █ ████ ███   ██  ████ ███  █    ███   ██ 
+###  ██  █  █ █ █   ██  █  █ █  █ █    █       █
+###  ██  █  █ █  █ ████ █  █ ███  ████ ████ ███ 
 ### ----- Defining Variables Starts Here ----- ###
+
+
 
 # This is to determine if we are on air
 var is_falling: int = 0
@@ -30,16 +37,28 @@ func _ready() -> void:
 
 
 
-# Called every physics frame. 'delta' is the elapsed time since the previous frame.
+### ----- Physics Tick Sections ----- #####
+### ███  █  █ █  █  ███ ████  ███  ███    ████ ████  ███ █  █
+### █  █ █  █ █  █ █     ██  █    █        ██   ██  █    █ █ 
+### ███  ████  ██   ██   ██  █     ██      ██   ██  █    ██  
+### █    █  █  ██     █  ██  █       █     ██   ██  █    █ █ 
+### █    █  █  ██  ███  ████  ███ ███      ██  ████  ███ █  █
+### ----- Physics Tick Sections ----- #####
+
+
+### Called every physics frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	# Check if we are in air
-	is_falling = get_contact_count()# == 0
-	#print(is_falling)
 	
-
-### ----- Movement Input Starts Here ----- ###
-
-	# Defining Input Direction and set it 0 in every tick
+	### ----- Movement Input Starts Here ----- ###
+	### █░░█░░██░░█░░█░████░█░░█░████░█░░█░████░░░░████░█░░█░███░░█░░█░████
+	### ████░█░░█░█░░█░█░░░░████░█░░░░██░█░░██░░░░░░██░░██░█░█░░█░█░░█░░██░
+	### █░░█░█░░█░█░░█░███░░█░░█░███░░█░██░░██░░░░░░██░░█░██░███░░█░░█░░██░
+	### █░░█░█░░█░░██░░█░░░░█░░█░█░░░░█░░█░░██░░░░░░██░░█░░█░█░░░░█░░█░░██░
+	### █░░█░░██░░░██░░████░█░░█░████░█░░█░░██░░░░░████░█░░█░█░░░░░██░░░██░░
+	
+	# Defining Input Direction and set it first into 0 in every tick
+	
+	# First we set standard 2D Plane Movement
 	var input_direction = Vector3.ZERO
 	# Overriding Input Direction if movement keys are pressed
 	if Input.is_action_pressed("MoveForward"):
@@ -51,27 +70,31 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("MoveLeft"):
 		input_direction.x -= 1.0
 		
-
+	# Then we set ascend direction wether its up like jumping, or down as crouching
+	var ascend_direction: float = 0
+	if Input.is_action_pressed("Jump"):
+		ascend_direction += 1.0
+	if Input.is_action_pressed("Crouch"):
+		ascend_direction -= 1.0 
+	
+	
 	# If there's input, apply movement
 	if input_direction != Vector3.ZERO:
 		# Normalize the input direction
 		input_direction = input_direction.normalized()
-
+		
+		
 		# Get forward and right vectors from CamPivot_LR
 		var pivot_forward = -CamPivot_LR.global_transform.basis.z
 		var pivot_right = CamPivot_LR.global_transform.basis.x
-
-		# Flatten the forward vector to the ground plane (ignore Y)
-		#pivot_forward.y = 0
-		#pivot_forward = pivot_forward.normalized()
-
+		
 		# Calculate movement direction relative to CamPivot_LR
 		var move_direction = (pivot_forward * input_direction.z) + (pivot_right * input_direction.x)
 		move_direction = move_direction.normalized()
-
+		
+		
 		# Apply central impulse for movement
 		# We use delta to make it framerate-independent
 		apply_central_impulse(move_direction * movement_force * delta)
 		
-		# NEW - applies continuous force (friction will balance it out)
-		#apply_central_force(move_direction * movement_force)
+		
