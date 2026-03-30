@@ -255,7 +255,7 @@ shape = SubResource("ConcavePolygonShape3D_15ebu")
 shape = SubResource("ConcavePolygonShape3D_ttn0b")
 
 [node name="player_root" parent="." unique_id=703631089 instance=ExtResource("3_bjp20")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.1099167, 1.7711906, 11.849444)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 13.986532, 3.8734612, 19.947617)
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=51419601]
 transform = Transform3D(0.5, 0.86602545, 0, 0, 0, 1, 0.86602545, -0.50000006, 0, 5.5, 2.291458, 23.4)
